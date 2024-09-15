@@ -1,0 +1,13 @@
+<div class="container">
+<h1 class="text-center mb-3">This is my Todo App</h1>
+<div class="container-fluid ">
+    <app-addtodo (addTodo)="addTodo($event)"></app-addtodo>
+    <h4 class="text-center">Your Todos:</h4>
+    <div *ngIf="this.todos.length==0; else elseBlock" class="text-center"><h5>No Todo to display!!</h5></div>
+<ng-template #elseBlock>
+    <div *ngFor="let todo of todos index as i" class="d-flex justify-content-center">
+        <app-todo-component [todo]="todo" [i]="i" (deleteTodo)="deleteTodo($event)" (doneTodo)="doneTodo($event)"></app-todo-component>
+    </div>
+</ng-template>
+</div>
+</div>
